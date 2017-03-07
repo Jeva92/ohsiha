@@ -1,0 +1,18 @@
+extends ../node_modules/jade-bootstrap/_bootstrap.jade
+block body
+    +navbar("Test", "dropdown_menu")
+        +nav_item("/") Index
+        +nav_item("/test") Test
+    .container
+        table.table.table-bordered
+            thead
+                tr
+                    td= ""
+                    td= ""
+                    td= ""
+            tbody
+                each t, i in json.items
+                    tr
+                        td= t.title
+                        td= t.link
+                        td= t.description
