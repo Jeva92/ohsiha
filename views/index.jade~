@@ -1,5 +1,0 @@
-extends ../node_modules/jade-bootstrap/_bootstrap.jade
-block body
-    +navbar("Index", "dropdown_menu")
-        +nav_item("/") Index
-	+nav_item("/test") Test

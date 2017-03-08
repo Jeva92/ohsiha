@@ -3,3 +3,7 @@ block body
     +navbar("Index", "dropdown_menu")
         +nav_item("/") Index
         +nav_item("/test") Test
+        - if (!user)
+            +nav_item("/auth/facebook") Login
+        - else
+            +nav_item("/logout") Logout #{user.facebook.name}
