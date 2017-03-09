@@ -1,9 +1,34 @@
 extends ../node_modules/jade-bootstrap/_bootstrap.jade
 block body
-    +navbar("Index", "dropdown_menu")
+    +navbar("test", "dropdown_menu")
         +nav_item("/") Index
         +nav_item("/test") Test
-        - if (!user)
-            +nav_item("/auth/facebook") Login
-        - else
-            +nav_item("/logout") Logout #{user.facebook.name}
+    .col-xs-12.col-sm-6.col-lg-8
+            table.table.table-bordered
+                tbody
+                    each t, i in json.items
+                        tr
+                            td
+                                a(href=t.url) #{t.title}
+                        tr
+                            td 
+                                !{t.description}
+                        tr
+                            td
+                        - if (i == 6)
+                            - break;
+    .col-xs-6.col-lg-4
+            - if (!user)
+                +a-btn-primary("/auth/google") Google login
+            - else
+                p
+                       Logged in as #{user.google.name}
+            p= "Öriöriöriöri"
+            p= "Tänne tulee viestipalsta johon kirjaudutaan google tunnareilla"
+            table.table.table-bordered
+                tbody
+                    tr
+                        td= "Viestin lähettäjä - Aika"
+                    tr
+                        td= "Viesti. Öriöriöriöriöriöriöri"
+                    br

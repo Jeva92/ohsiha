@@ -3,17 +3,29 @@ block body
     +navbar("test", "dropdown_menu")
         +nav_item("/") Index
         +nav_item("/test") Test
-    .container
-        table.table.table-bordered
-            tbody
-                each t, i in json.items
+    .col-md-6
+        .container
+            table.table.table-bordered
+                tbody
+                    each t, i in json.items
+                        tr
+                            td
+                                a(href=t.url) #{t.title}
+                        tr
+                            td 
+                                !{t.description}
+                        tr
+                            td
+                        - if (i == 6)
+                            - break;
+    .col-md-6
+        .container
+            p= "Öriöriöriöri"
+            p= "Tänne tulee viestipalsta johon kirjaudutaan google tunnareilla"
+            table.table.table-bordered
+                tbody
                     tr
-                        td
-                            a(href=t.url) #{t.title}
+                        td= "Viestin lähettäjä - Aika"
                     tr
-                        td 
-                            #{t.description}
-                    tr
-                        td= "Tähän voisi vaikka kommentoinnin tms"
-                     - if (i == 6)
-                         - break;
+                        td= "Viesti. Öriöriöriöriöriöriöri"
+                    br

@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost:27017/ohsihadb');
 
-var User = mongoose.Schema({
-    fb : {
+var userSchema = new mongoose.Schema({
+    google : {
         id : String,
 	token : String,
 	email: String,
@@ -11,4 +11,6 @@ var User = mongoose.Schema({
     }
 });
 
-module.exports = {User: User};
+var User = mongoose.model('User', userSchema);
+
+module.exports = User;

@@ -1,8 +1,8 @@
 module.exports = {
 
-    'facebookAuth' : {
-        'clientID'      : '1861523224110060', // your AppID
-        'clientSecret'  : '8247851544c619053441d93ebb021023', // your App Secret
-        'callbackURL' : 'http://localhost:8080/auth/facebook/callback'
+    'googleAuth' : {
+        'clientID' : '1094454047804-jsnv2m131jhes2lbttblgl0ashf3u73q.apps.googleusercontent.com', // your AppID
+        'clientSecret'  : '2to_GWuSjuClCiAunYUVGzlA', // your App Secret
+        'callbackURL' : 'http://ohsiha.kahvituoppi.net/auth/google/callback'
     }
 };
