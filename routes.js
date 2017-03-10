@@ -23,7 +23,6 @@ module.exports = function(app, passport) {
       var newComment = new Comment;
       newComment.author = req.user.google.name;
       newComment.comment = req.body.comment;
-      newcomment.date = new Date();
       newComment.save(function(err) {
         if (err)
           return console.log(err);
