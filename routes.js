@@ -22,7 +22,7 @@ module.exports = function(app, passport) {
 	   });
     });
 
-    app.post('/comment', function(req, res) {
+    app.post('/comment', isLoggedIn, function(req, res) {
       var newComment = new Comment;
       newComment.author = req.user.google.name;
       newComment.comment = req.body.message;

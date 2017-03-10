@@ -3,6 +3,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var passport = require('passport');
 var session = require('express-session');
+var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 var app = express();
@@ -18,6 +19,8 @@ app.use(session({
     resave: false,
     saveUninitailize: false,
 }));
+
+app.use(bodyParser.json());
 
 app.locals.pretty = true;
 app.use(passport.initialize());
