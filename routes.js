@@ -11,7 +11,7 @@ module.exports = function(app, passport) {
       rss.load("http://www.io-tech.fi/feed/", function(err, feed) {
         Comment.find({}, {limit: 10}, function(err, comments) {
           if(err) {
-            return err;
+            return console.log(err);
           } else {
             res.render('index', {title: 'Jeva ohsiha', json: feed, comments: comments});
           }
@@ -22,11 +22,11 @@ module.exports = function(app, passport) {
     app.post('/comment', isLoggedIn, function(req, res) {
       var newComment = new Comment;
       newComment.author = req.user.google.name;
-      newComment.comment = req.body.message;
+      newComment.comment = req.body.comment;
       newcomment.date = new Date();
       newComment.save(function(err) {
         if (err)
-          return err;
+          return console.log(err);
       });
       res.redirect('/');
     });
