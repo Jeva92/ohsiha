@@ -9,7 +9,7 @@ module.exports = function(app, passport) {
 
     app.get('/', function(req, res) {
       rss.load("http://www.io-tech.fi/feed/", function(err, feed) {
-        Comment.find({}, {limit: 10}).toArray( function(err, comments) {
+        Comment.find({}, {limit: 10}, function(err, comments) {
           if(err) {
             return err;
           } else {
