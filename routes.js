@@ -24,7 +24,7 @@ module.exports = function(app, passport) {
 
     app.post('/comment', function(req, res) {
       var newComment = new Comment;
-      newComment.author = user.google.name;
+      newComment.author = req.user.google.name;
       newComment.comment = req.body.message;
       newcomment.date = new Date();
       newComment.save(function(err) {
