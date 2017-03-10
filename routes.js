@@ -6,13 +6,10 @@ module.exports = function(app, passport) {
 	        res.locals.user = req.user || null;
 		next();
     });
-    app.get('/old', function(req, res) {
-        res.render('index', {title: 'Jeva ohsiha'});
-    });
 
     app.get('/', function(req, res) {
       rss.load("http://www.io-tech.fi/feed/", function(err, feed) {
-        Comment.find({}, function(err, comments) {
+        Comment.find({}, {limit: 10}).toArray( function(err, comments) {
           if(err) {
             return err;
           } else {
@@ -31,6 +28,7 @@ module.exports = function(app, passport) {
         if (err)
           return err;
       });
+      res.redirect('/');
     });
 
     app.get('/json', function(req, res) {
