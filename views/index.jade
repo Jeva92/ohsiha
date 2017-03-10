@@ -18,11 +18,14 @@ block body
                 - break;
   .col-xs-6.col-lg-4
     - if (!user)
+      p Login to write comment
       +a-btn-primary("/auth/google") Google login
     - else
       p Logged in as #{user.google.name}
       +a-btn-danger("/logout") Logout
-      p= "Send message using the name from your login"
+      br
+      br
+      p Send message using the name from your login
       form(action='/comment', method='post')
         p="Message"
         input(type="text", name="comment")
@@ -30,11 +33,12 @@ block body
         input(type="submit", value="Send")
     br
     br
+    p Showing 10 last comments
     table.table.table-bordered
       each t, i in comments
         tbody
           tr
             td.alert-success= t.author
-            td.alert-success= t.date
+            td.alert-success= t.date.toDateString()
           tr
             td.alert-warning(colspan='2')= t.comment
