@@ -1,8 +1,7 @@
 extends ../node_modules/jade-bootstrap/_bootstrap.jade
 block body
-  +navbar("test", "dropdown_menu")
+  +navbar("Jeva ohsiha 2017", "dropdown_menu")
     +nav_item("/") Index
-    +nav_item("/test") Test
   .col-xs-12.col-sm-6.col-lg-8
     table.table.table-bordered
       tbody
@@ -26,7 +25,7 @@ block body
       p= "Send message using the name from your login"
       form(action='/comment', method='post')
         p="Message"
-        input(type="text", id="comment")
+        input(type="text", name="comment")
         p
         input(type="submit", value="Send")
     br

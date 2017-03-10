@@ -9,7 +9,7 @@ module.exports = function(app, passport) {
 
     app.get('/', function(req, res) {
       rss.load("http://www.io-tech.fi/feed/", function(err, feed) {
-        Comment.find({}, 'author date comment', function(err, comments) {
+        Comment.find({}, 'author date comment').sort('-date').limit(10).exec(function(err, comments) {
           if(err) {
             return console.log(err);
           } else {
