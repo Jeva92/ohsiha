@@ -8,11 +8,11 @@ block body
       tbody
         each t, i in json.items
           tr
-            td
+            td.alert-info
               a(href=t.url) #{t.title}
           tr
-            td
-              !{t.description}
+            td.alert-success
+                !{t.description}
           tr
             td
               - if (i == 6)
@@ -21,13 +21,12 @@ block body
     - if (!user)
       +a-btn-primary("/auth/google") Google login
     - else
-      p
-        Logged in as #{user.google.name}
-      p
+      p Logged in as #{user.google.name}
+      +a-btn-danger("/logout") Logout
       p= "Send message using the name from your login"
       form(action='/comment', method='post')
         p="Message"
-        input(type="text", name="comment")
+        input(type="text", id="comment")
         p
         input(type="submit", value="Send")
     br
@@ -36,7 +35,7 @@ block body
       each t, i in comments
         tbody
           tr
-            td= t.author
-            td= t.date
+            td.alert-success= t.author
+            td.alert-success= t.date
           tr
-            td= t.comment
+            td.alert-warning(colspan='2')= t.comment

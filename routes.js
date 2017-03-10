@@ -9,7 +9,7 @@ module.exports = function(app, passport) {
 
     app.get('/', function(req, res) {
       rss.load("http://www.io-tech.fi/feed/", function(err, feed) {
-        Comment.find({}, {limit: 10}, function(err, comments) {
+        Comment.find({}, 'author date comment', function(err, comments) {
           if(err) {
             return console.log(err);
           } else {
@@ -19,15 +19,18 @@ module.exports = function(app, passport) {
 	   });
     });
 
-    app.post('/comment', isLoggedIn, function(req, res) {
-      var newComment = new Comment;
+    app.post('/comment', function(req, res) {
+      var newComment = new Comment();
       newComment.author = req.user.google.name;
+      console.log(req.body.comment);
       newComment.comment = req.body.comment;
       newComment.save(function(err) {
-        if (err)
+        if (err) {
           return console.log(err);
+        } else {
+          res.redirect('/');
+        }
       });
-      res.redirect('/');
     });
 
     app.get('/json', function(req, res) {

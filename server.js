@@ -4,6 +4,7 @@ var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var passport = require('passport');
 var session = require('express-session');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var mongoose = require('mongoose');
 
 var app = express();
@@ -20,8 +21,9 @@ app.use(session({
     saveUninitailize: false,
 }));
 
+app.use(cookieParser());
 app.use(bodyParser.json());
-
+app.use(bodyParser.urlencoded({extended: false}));
 app.locals.pretty = true;
 app.use(passport.initialize());
 app.use(passport.session());
