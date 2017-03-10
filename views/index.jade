@@ -42,3 +42,8 @@ block body
             td.alert-success= t.date.toDateString()
           tr
             td.alert-warning(colspan='2')= t.comment
+          - if (user)
+            tr
+              td(colspan='2')
+                a(href="/delete?id=#{t.id}")
+                  +btn-danger("Delete")
