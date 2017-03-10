@@ -3,10 +3,13 @@ var LocalStrategy = require('passport-local').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var passport = require('passport');
 var session = require('express-session');
+var mongoose = require('mongoose');
 
 var app = express();
-var User = require('./models.js');
+var User = require('./models/user.js');
 var authConfig = require('./auth.js');
+
+mongoose.connect('mongodb://localhost:27017/ohsihadb');
 
 app.set('view engine', 'jade');
 
