@@ -59,6 +59,19 @@ module.exports = function(app, passport) {
       });
     });
 
+    app.post('/comments', isLoggedIn, function(req, res) {
+      var newComment = new Comment();
+      newComment.author = req.user.google.name;
+      newComment.comment = req.body.comment;
+      newComment.save(function(err) {
+        if (err) {
+          return console.log(err);
+        } else {
+          res.redirect('/');
+        }
+      });
+    });
+
     app.get('/comments', function(req, res) {
       Comment.find({}, 'author date comment id').sort('-date').limit(10).exec(function(err, comments) {
         if(err) {
