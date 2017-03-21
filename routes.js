@@ -46,9 +46,9 @@ module.exports = function(app, passport) {
       });
     });
 
-    app.post('/comment', isLoggedIn, function(req, res) {
+    app.post('/comments', function(req, res) {
       var newComment = new Comment();
-      newComment.author = req.user.google.name;
+      newComment.author = req.body.author;
       newComment.comment = req.body.comment;
       newComment.save(function(err) {
         if (err) {
