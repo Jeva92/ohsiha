@@ -13,7 +13,7 @@ var authConfig = require('./auth.js');
 
 mongoose.connect('mongodb://localhost:27017/ohsihadb');
 
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 app.use(session({
     secret: 'Fail',
